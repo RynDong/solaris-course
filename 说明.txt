@@ -1,0 +1,9 @@
+视频网站页面
+cd web
+npm install
+npm run serve-prod
+
+控台页面
+cd admin
+npm install
+npm run serve-prod
