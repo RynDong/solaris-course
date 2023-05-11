@@ -54,7 +54,7 @@
           <div class="ach-list">
             <div class="ach-list-header">
               <span class="ach-list-header">成就列表（已获得）</span>
-              <span>已获得{{achievements.length}} 未获得{{allAchievements.filter(e=>e?.type == (currentType == -1 ? e.type : currentType)).length - achievements.length}}</span>
+              <span>已获得{{achievements.length}} 未获得{{unGained}}</span>
             </div>
             <div
               class="ach-list-item"
@@ -86,6 +86,11 @@ export default {
       achievementTypes: [],
       allAchievements: [],
     };
+  },
+  computed:{
+    unGained(){
+          return this.allAchievements.filter(e=>e?.type == (this.currentType == -1 ? e.type : this.currentType)).length - this.achievements.length
+    }
   },
   methods: {
     getAchievementType() {
@@ -138,10 +143,12 @@ export default {
 
 <style scoped>
 .ach-header {
-  background: orange;
+  background: #eee;
   padding: 20px;
   display: flex;
   align-items: center;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 5px 5px -5px, rgba(0, 0, 0, 0.3) 0px 4px 5px -8px;
 }
 .avatar {
   height: 50px;
@@ -160,11 +167,14 @@ export default {
 }
 .ach-body-left {
   flex: 1;
-  background: orange;
+  background: #eee;
   padding: 0 10px;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 5px 5px -5px, rgba(0, 0, 0, 0.3) 0px 4px 5px -8px;
+
 }
 .ach-body-right {
-  flex: 3;
+  flex: 4;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -172,7 +182,10 @@ export default {
 }
 .ach-cabinet,
 .ach-list {
-  background: orange;
+  background: #eee;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 5px 5px -5px, rgba(0, 0, 0, 0.3) 0px 4px 5px -8px;
+
 }
 .ach-list {
   flex: 1;
@@ -184,12 +197,13 @@ export default {
   padding-top: 20px;
 }
 .left-item {
-  background: #ccc;
+  background: #cecece;
   margin: 10px 0;
   text-align: center;
   padding: 5px;
   cursor: pointer;
   transition: 0.3s;
+  border-radius: 5px;
 }
 .left-item:hover {
   opacity: 0.9;

@@ -27,6 +27,7 @@
           <div class="comment-header">
             <img
               class="avatar"
+              @click="openHomePage(comment.userId)"
               :src="`https://api.multiavatar.com/${(comment.userId || 'default')}.png`"
               alt=""
             >
@@ -147,11 +148,14 @@ export default {
         "ended",
         () => {
           //结束
-          Toast.success("播放完毕");
+          Toast.success("播放完毕,成就获取中...");
           this.addAchievement();
         },
         false
       );
+    },
+    openHomePage(id){
+      window.open(location.origin + "/home/" + id);
     },
   },
   mounted() {
@@ -176,6 +180,7 @@ export default {
   list-style: none;
   padding: 0;
   margin-top: 80px;
+  
 }
 .comment-item {
   padding: 10px 0;
@@ -201,5 +206,9 @@ export default {
 }
 .like {
   cursor: pointer;
+}
+.avatar:hover{
+  cursor: pointer;
+  opacity: .9;
 }
 </style>

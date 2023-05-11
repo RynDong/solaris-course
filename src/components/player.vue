@@ -36,7 +36,7 @@ export default {
 
       // 初始化播放器
       $("#" + _this.playerId).append(
-        '<div class="prism-player" id="' + _this.playerId + '-player"></div>'
+        '<div class="" id="' + _this.playerId + '-player"></div>'
       );
       _this.aliPlayer = new Aliplayer(
         {
@@ -67,7 +67,7 @@ export default {
 
             // 初始化播放器
             $("#" + _this.playerId).append(
-              '<div class="prism-player" id="' +
+              '<div class="" id="' +
                 _this.playerId +
                 '-player"></div>'
             );
@@ -95,3 +95,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+.prism-player{
+  height: 500px !important;
+}
+</style>
